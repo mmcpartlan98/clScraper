@@ -52,7 +52,8 @@ class Listing:
             self.classification = "Unclassified"
 
             # Collect all words in a listing, strip special characters, and store them as a string
-            self.descriptiveText = str(self.title + self.description).replace(',', ' ').replace('\n', ' ').replace('.', ' ')
+            self.descriptiveText = str(self.title + self.description).replace(',', ' ').replace('\n', ' ').replace('.',
+                                                                                                                   ' ')
             try:
                 self.coverImageLink = str(subTree.xpath('/html/head/meta[9][@property="og:image"]/@content')[0])
             except IndexError as e:
@@ -166,6 +167,35 @@ class Search:
         return hitScore / len(stringWords)
 
 
+class MinerSearchObject:
+    def __init__(self, searchTerm, response):
+        self.lowRange = searchTerm
+        self.results = response
+
+
+class DataMiner:
+    def __init__(self, areaCode):
+        self.areaCode = areaCode
+        self.baseURL = "https://losangeles.craigslist.org/count-search?type=search-count&query="
+        self.endURL = "&ordinal=1&ratio=0&clicked=0"
+        self.resultExists = list()
+        self.resultSubsearchObjects = list()
+
+    def mine(self):
+        for index in range(self.areaCode * 10000, self.areaCode * 10000 + 9999):
+            searchTermMiner = str(index) + "*"
+            queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
+            print(searchTermMiner, queryResponse.text)
+            self.resultSubsearchObjects.append(MinerSearchObject(searchTermMiner, queryResponse.text))
+            # Save after search completes
+        with open('dataMiner.pickle', 'wb') as mineFile:
+            print("Saving to file...")
+            pickle.dump(self.resultSubsearchObjects, mineFile)
+
+
+testDig = DataMiner(7)
+testDig.mine()
+
 sendTexts = False
 loadData = True
 
@@ -230,6 +260,10 @@ except TypeError:
 
 except FileNotFoundError:
     print("No save file found.")
+    searchQue = desiredSearches
+
+except pickle.UnpicklingError:
+    print("Corrupt pickle file.")
     searchQue = desiredSearches
 
 time.sleep(10)
