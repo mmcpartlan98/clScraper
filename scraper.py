@@ -1,8 +1,10 @@
+import math
 import pickle
 import requests
 import datetime
 import time
 from lxml import html
+import matplotlib.pyplot as plotter
 from twilio.rest import Client
 
 # Minutes between scraping
@@ -169,32 +171,100 @@ class Search:
 
 class MinerSearchObject:
     def __init__(self, searchTerm, response):
-        self.lowRange = searchTerm
+        self.search = searchTerm
         self.results = response
+        self.forSaleCount = 0
+        try:
+            splitResponse = self.results.split('"sss":{')[1].split('}')[0]
+            splitResponse = splitResponse.split(',')
+
+            for split in splitResponse:
+                self.forSaleCount = self.forSaleCount + int(split.split(':')[1])
+        except IndexError:
+            pass
 
 
 class DataMiner:
     def __init__(self, areaCode):
         self.areaCode = areaCode
+        self.rangeStartIndex = self.areaCode * 1000000000
+        self.rangeEndIndex = self.areaCode * 1000000000 + 999999999
         self.baseURL = "https://losangeles.craigslist.org/count-search?type=search-count&query="
         self.endURL = "&ordinal=1&ratio=0&clicked=0"
-        self.resultExists = list()
-        self.resultSubsearchObjects = list()
 
-    def mine(self):
-        for index in range(self.areaCode * 10000, self.areaCode * 10000 + 9999):
+    class EmptyAttribute:
+        def __init__(self):
+            self.text = "{}"
+
+    def preMine(self, startIndex, endIndex, interval):
+        fileName = str(startIndex) + '_' + str(endIndex) + '.pickle'
+        IDDistResults = list()
+        for index in range(math.floor(startIndex/interval), math.floor(endIndex/interval)):
             searchTermMiner = str(index) + "*"
-            queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
-            print(searchTermMiner, queryResponse.text)
-            self.resultSubsearchObjects.append(MinerSearchObject(searchTermMiner, queryResponse.text))
+            # Try to get the response twice before setting to empty string (to be interpreted as 0)
+            try:
+                queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
+            except requests.exceptions.RequestException:
+                try:
+                    queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
+                except requests.exceptions.RequestException:
+                    queryResponse = DataMiner.EmptyAttribute()
+
+            newResult = MinerSearchObject(searchTermMiner, queryResponse.text)
+            IDDistResults.append(newResult)
+            print(searchTermMiner, "        Produced ", newResult.forSaleCount, "for sale (sss) results.")
+
             # Save after search completes
-        with open('dataMiner.pickle', 'wb') as mineFile:
+        with open(fileName, 'wb') as mineFile:
             print("Saving to file...")
-            pickle.dump(self.resultSubsearchObjects, mineFile)
+            pickle.dump(IDDistResults, mineFile)
+            print("Saved!")
+
+    def digDeeper(self, plotYN):
+        try:
+            with open(str(self.rangeStartIndex) + '_' + str(self.rangeEndIndex) + '.pickle', 'rb') as minedData:
+                IDDistResults = pickle.load(minedData)
+
+            listingDistribution = list()
+            listingXVals = list()
+            for item in IDDistResults:
+                listingDistribution.append(item.forSaleCount)
+                listingXVals.append(int(item.search.split('*')[0])*100000)
+
+            if plotYN:
+                plotter.plot(listingXVals, listingDistribution)
+                plotter.show()
+
+            for index in range(0, len(listingDistribution) - 1):
+                if listingDistribution[index] >= 10:
+                    self.preMine(listingXVals[index], listingXVals[index] + 99999, 100)
+                    with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle', 'rb') as minedData:
+                        IDDistResults = pickle.load(minedData)
+                for item in IDDistResults:
+                    listingDistribution.append(item.forSaleCount)
+                    listingXVals.append(int(item.search.split('*')[0]) * 100000)
+
+                if plotYN:
+                    plotter.plot(listingXVals, listingDistribution)
+                    plotter.show()
+
+        except TypeError as e:
+            print(e)
+            print("Loaded file is empty. Run preMine() first.")
+            return
+
+        except FileNotFoundError:
+            print("No save file found. Run preMine() first.")
+            return
+
+        except pickle.UnpicklingError:
+            print("Corrupt pickle file. Run preMine() first.")
+            return
 
 
 testDig = DataMiner(7)
-testDig.mine()
+testDig.preMine(testDig.rangeStartIndex, testDig.rangeEndIndex, 100000)
+testDig.digDeeper()
 
 sendTexts = False
 loadData = True
