@@ -197,9 +197,10 @@ class DataMiner:
             self.text = "{}"
 
     def preMine(self, startIndex, endIndex, interval):
+        runningTotal = 0
         fileName = str(startIndex) + '_' + str(endIndex) + '.pickle'
         IDDistResults = list()
-        for index in range(math.floor(startIndex/interval), math.floor(endIndex/interval)):
+        for index in range(math.floor(startIndex/interval), math.floor(endIndex/interval) + 1):
             searchTermMiner = str(index) + "*"
             # Try to get the response twice before setting to empty string (to be interpreted as 0)
             try:
@@ -212,7 +213,8 @@ class DataMiner:
 
             newResult = MinerSearchObject(searchTermMiner, queryResponse.text)
             IDDistResults.append(newResult)
-            print(searchTermMiner, "        Produced ", newResult.forSaleCount, "for sale (sss) results.")
+            runningTotal = runningTotal + newResult.forSaleCount
+            print(searchTermMiner, "        Produced ", newResult.forSaleCount, "for sale (sss) results.", "(", runningTotal, ")")
 
             # Save after search completes
         with open(fileName, 'wb') as mineFile:
@@ -231,22 +233,33 @@ class DataMiner:
                 listingDistribution.append(item.forSaleCount)
                 listingXVals.append(int(item.search.split('*')[0])*100000)
 
+            print(listingXVals)
             if plotYN:
                 plotter.plot(listingXVals, listingDistribution)
                 plotter.show()
 
             for index in range(0, len(listingDistribution) - 1):
+                subListingDistribution = list()
                 if listingDistribution[index] >= 10:
-                    self.preMine(listingXVals[index], listingXVals[index] + 99999, 100)
-                    with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle', 'rb') as minedData:
-                        IDDistResults = pickle.load(minedData)
-                for item in IDDistResults:
-                    listingDistribution.append(item.forSaleCount)
-                    listingXVals.append(int(item.search.split('*')[0]) * 100000)
+                    print(listingXVals[index], listingDistribution[index + 1])
+                    try:
+                        with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle',
+                                  'rb') as minedData:
+                            IDDistResults = pickle.load(minedData)
+                    except FileNotFoundError:
+                        self.preMine(listingXVals[index], listingXVals[index] + 99999, 100)
+                        with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle', 'rb') as minedData:
+                            IDDistResults = pickle.load(minedData)
+                    for item in IDDistResults:
+                        subListingDistribution.append(item.forSaleCount)
 
-                if plotYN:
-                    plotter.plot(listingXVals, listingDistribution)
-                    plotter.show()
+                    subListingXVals = range(listingXVals[index], listingXVals[index] + 99999, 100)
+                    print(len(subListingXVals))
+                    print(len(subListingDistribution))
+                    if plotYN:
+                        plotter.clf()
+                        plotter.plot(subListingXVals, subListingDistribution)
+                        plotter.show()
 
         except TypeError as e:
             print(e)
@@ -263,8 +276,8 @@ class DataMiner:
 
 
 testDig = DataMiner(7)
-testDig.preMine(testDig.rangeStartIndex, testDig.rangeEndIndex, 100000)
-testDig.digDeeper()
+#testDig.preMine(testDig.rangeStartIndex, testDig.rangeEndIndex, 100000)
+testDig.digDeeper(False)
 
 sendTexts = False
 loadData = True
