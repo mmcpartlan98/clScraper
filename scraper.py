@@ -8,7 +8,7 @@ import matplotlib.pyplot as plotter
 from twilio.rest import Client
 
 # Minutes between scraping
-searchInterval = 5
+searchInterval = 1
 
 # Twilio SMS API config
 account_sid = 'AC8bd9f1713930d5c3a65e6ab592420dba'
@@ -69,10 +69,11 @@ class Listing:
 
 
 class Search:
-    def __init__(self, location, searchTerms, keywordsPos, minPrice, maxPrice):
+    def __init__(self, location, searchTerms, keywordsPos, keyWordsNeg, minPrice, maxPrice):
         self.location = location
         self.searchTerms = searchTerms
         self.keywordsPos = keywordsPos + ' ' + searchTerms.replace('+', ' ')
+        self.keywordsNeg = keyWordsNeg
         self.minPrice = minPrice
         self.maxPrice = maxPrice
         self.allObjects = list()
@@ -126,7 +127,7 @@ class Search:
 
                 # Scoring using 'manual' identifiers
                 self.allObjects.append(newListing)
-                scoreReport = Search.scoreMatch(self.keywordsPos, newListing.descriptiveText)
+                scoreReport = Search.scoreMatch(self.keywordsPos, self.keywordsNeg, newListing.descriptiveText)
 
                 print("Found NEW listing! Score:", scoreReport)
 
@@ -152,7 +153,7 @@ class Search:
         print(message.sid)
 
     @staticmethod
-    def scoreMatch(hotWords, inString):
+    def scoreMatch(hotWords, coldWordsLocal, inString):
         badSymbols = ",./\\][!@#$%^&*()-=+_<>`~?\"\'"
         for symbol in badSymbols:
             inString.replace(symbol, ' ')
@@ -161,149 +162,49 @@ class Search:
             word.strip()
 
         hotWords = hotWords.split()
+        coldWordsLocal = coldWordsLocal.split()
         hitScore = 0
         for word in stringWords:
             for checkWord in hotWords:
                 if word == checkWord:
                     hitScore = hitScore + 1
+            for checkWord in coldWordsLocal:
+                if word == checkWord:
+                    hitScore = hitScore - 10
         return hitScore / len(stringWords)
 
 
-class MinerSearchObject:
-    def __init__(self, searchTerm, response):
-        self.search = searchTerm
-        self.results = response
-        self.forSaleCount = 0
-        try:
-            splitResponse = self.results.split('"sss":{')[1].split('}')[0]
-            splitResponse = splitResponse.split(',')
-
-            for split in splitResponse:
-                self.forSaleCount = self.forSaleCount + int(split.split(':')[1])
-        except IndexError:
-            pass
-
-
-class DataMiner:
-    def __init__(self, areaCode):
-        self.areaCode = areaCode
-        self.rangeStartIndex = self.areaCode * 1000000000
-        self.rangeEndIndex = self.areaCode * 1000000000 + 999999999
-        self.baseURL = "https://losangeles.craigslist.org/count-search?type=search-count&query="
-        self.endURL = "&ordinal=1&ratio=0&clicked=0"
-
-    class EmptyAttribute:
-        def __init__(self):
-            self.text = "{}"
-
-    def preMine(self, startIndex, endIndex, interval):
-        runningTotal = 0
-        fileName = str(startIndex) + '_' + str(endIndex) + '.pickle'
-        IDDistResults = list()
-        for index in range(math.floor(startIndex/interval), math.floor(endIndex/interval) + 1):
-            searchTermMiner = str(index) + "*"
-            # Try to get the response twice before setting to empty string (to be interpreted as 0)
-            try:
-                queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
-            except requests.exceptions.RequestException:
-                try:
-                    queryResponse = requests.get(self.baseURL + searchTermMiner + self.endURL, timeout=10)
-                except requests.exceptions.RequestException:
-                    queryResponse = DataMiner.EmptyAttribute()
-
-            newResult = MinerSearchObject(searchTermMiner, queryResponse.text)
-            IDDistResults.append(newResult)
-            runningTotal = runningTotal + newResult.forSaleCount
-            print(searchTermMiner, "        Produced ", newResult.forSaleCount, "for sale (sss) results.", "(", runningTotal, ")")
-
-            # Save after search completes
-        with open(fileName, 'wb') as mineFile:
-            print("Saving to file...")
-            pickle.dump(IDDistResults, mineFile)
-            print("Saved!")
-
-    def digDeeper(self, plotYN):
-        try:
-            with open(str(self.rangeStartIndex) + '_' + str(self.rangeEndIndex) + '.pickle', 'rb') as minedData:
-                IDDistResults = pickle.load(minedData)
-
-            listingDistribution = list()
-            listingXVals = list()
-            for item in IDDistResults:
-                listingDistribution.append(item.forSaleCount)
-                listingXVals.append(int(item.search.split('*')[0])*100000)
-
-            print(listingXVals)
-            if plotYN:
-                plotter.plot(listingXVals, listingDistribution)
-                plotter.show()
-
-            for index in range(0, len(listingDistribution) - 1):
-                subListingDistribution = list()
-                if listingDistribution[index] >= 10:
-                    print(listingXVals[index], listingDistribution[index + 1])
-                    try:
-                        with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle',
-                                  'rb') as minedData:
-                            IDDistResults = pickle.load(minedData)
-                    except FileNotFoundError:
-                        self.preMine(listingXVals[index], listingXVals[index] + 99999, 100)
-                        with open(str(listingXVals[index]) + '_' + str(listingXVals[index] + 99999) + '.pickle', 'rb') as minedData:
-                            IDDistResults = pickle.load(minedData)
-                    for item in IDDistResults:
-                        subListingDistribution.append(item.forSaleCount)
-
-                    subListingXVals = range(listingXVals[index], listingXVals[index] + 99999, 100)
-                    print(len(subListingXVals))
-                    print(len(subListingDistribution))
-                    if plotYN:
-                        plotter.clf()
-                        plotter.plot(subListingXVals, subListingDistribution)
-                        plotter.show()
-
-        except TypeError as e:
-            print(e)
-            print("Loaded file is empty. Run preMine() first.")
-            return
-
-        except FileNotFoundError:
-            print("No save file found. Run preMine() first.")
-            return
-
-        except pickle.UnpicklingError:
-            print("Corrupt pickle file. Run preMine() first.")
-            return
-
-
-testDig = DataMiner(7)
-#testDig.preMine(testDig.rangeStartIndex, testDig.rangeEndIndex, 100000)
-testDig.digDeeper(False)
-
-sendTexts = False
 loadData = True
+
+#####################################################################################################################
+#####################################################################################################################
+#####################################################################################################################
+# TO SET UP A NEW SEARCH:
+# 1. Install python 3.8 or newer with the packages: twilio, requests, and lxml (use "pip install PACKAGE" in
+#    python terminal)
+# 2. Add a new Search(location, search string, positiveWords, negativeWords, minPrice, maxPrice) to the
+#    desiredSearches array.
+# 3. Change sendTexts to true or false depending on whether you want to be notified of new listings
+#       NOTE: The first time you run the program, it will send a text for ALL hits (not only new ones).
+#             If this is not desired, run the program once with sentTexts set to False and allow it to build
+#             and save a library of search results. Exit the script, change sendTexts to True, and restart.
+#             Now, only notifications for new listings will be sent via text.
+
+#####################################################################################################################
 
 words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki two stroke four pull " \
         "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller"
 
-desiredSearches = [Search("losangeles", "outboard", words, 10, 200),
-                   Search("losangeles", "outboard+gas+tank", words, 1, 50),
-                   Search("sandiego", "outboard+gas+tank", words, 1, 50),
-                   Search("orangecounty", "outboard+gas+tank", words, 1, 50),
-                   Search("inlandempire", "outboard+gas+tank", words, 1, 50),
-                   Search("sandiego", "outboard+gas+can", words, 1, 50),
-                   Search("orangecounty", "outboard+gas+can", words, 1, 50),
-                   Search("losangeles", "outboard+gas+primer", words, 1, 30),
-                   Search("losangeles", "macgregor", words, 10, 200),
-                   Search("losangeles", "sailboat", words, 10, 200),
-                   Search("orangecounty", "outboard", words, 10, 200),
-                   Search("sandiego", "outboard", words, 10, 150),
-                   Search("inlandempire", "outboard", words, 10, 150),
-                   Search("losangeles", "trolling+motor", words, 10, 200),
-                   Search("orangecounty", "trolling+motor", words, 10, 200),
-                   Search("sandiego", "trolling+motor", words, 10, 200),
-                   Search("inlandempire", "trolling+motor", words, 10, 200),
-                   Search("losangeles", "boat+compass", words, 2, 20),
-                   Search("sandiego", "macgregor", words, 10, 200)]
+coldWords = "wanted"
+
+desiredSearches = [Search("sfbay", "outboard", words, coldWords, 0, 150),
+                   Search("reno", "outboard", words, coldWords, 0, 150),
+                   Search("sacramento", "outboard", words, coldWords, 0, 150)]
+sendTexts = True
+
+#####################################################################################################################
+#####################################################################################################################
+#####################################################################################################################
 
 rejSearches = list()
 

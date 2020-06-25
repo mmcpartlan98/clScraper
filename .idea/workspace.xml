@@ -1,7 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b981900-ccaf-4330-996a-78c531b7677d" name="Default Changelist" comment="" />
+    <list default="true" id="6b981900-ccaf-4330-996a-78c531b7677d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/clScraper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clScraper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7000000000_7000099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7000000000_7999999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7007200000_7007299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7007300000_7007399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7017200000_7017299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086400000_7086499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086500000_7086599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086600000_7086699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086700000_7086799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086800000_7086899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7086900000_7086999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087000000_7087099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087100000_7087199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087200000_7087299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087300000_7087399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087400000_7087499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087500000_7087599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087600000_7087699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087700000_7087799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087800000_7087899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7087900000_7087999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088000000_7088099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088100000_7088199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088200000_7088299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088300000_7088399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088400000_7088499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088500000_7088599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088600000_7088699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088700000_7088799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088800000_7088899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7088900000_7088999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089000000_7089099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089100000_7089199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089200000_7089299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089300000_7089399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089400000_7089499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089500000_7089599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089600000_7089699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089700000_7089799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089800000_7089899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7089900000_7089999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090000000_7090099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090100000_7090199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090200000_7090299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090300000_7090399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090400000_7090499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090500000_7090599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090600000_7090699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090700000_7090799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090800000_7090899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7090900000_7090999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091000000_7091099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091100000_7091199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091200000_7091299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091300000_7091399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091400000_7091499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091500000_7091599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091600000_7091699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091700000_7091799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091800000_7091899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7091900000_7091999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092000000_7092099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092100000_7092199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092200000_7092299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092300000_7092399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092400000_7092499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092500000_7092599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092600000_7092699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092700000_7092799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092800000_7092899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7092900000_7092999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093000000_7093099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093100000_7093199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093200000_7093299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093300000_7093399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093400000_7093499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093500000_7093599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093600000_7093699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093700000_7093799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093800000_7093899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7093900000_7093999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094000000_7094099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094100000_7094199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094200000_7094299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094300000_7094399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094400000_7094499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094500000_7094599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094600000_7094699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094700000_7094799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094800000_7094899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7094900000_7094999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095000000_7095099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095100000_7095199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095200000_7095299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095300000_7095399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095400000_7095499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095500000_7095599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095600000_7095699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095700000_7095799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095800000_7095899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7095900000_7095999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096000000_7096099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096100000_7096199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096200000_7096299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096300000_7096399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096400000_7096499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096500000_7096599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096600000_7096699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096700000_7096799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096800000_7096899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7096900000_7096999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097000000_7097099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097100000_7097199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097200000_7097299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097300000_7097399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097400000_7097499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097500000_7097599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097600000_7097699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097700000_7097799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097800000_7097899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7097900000_7097999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098000000_7098099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098100000_7098199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098200000_7098299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098300000_7098399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098400000_7098499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098500000_7098599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098600000_7098699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098700000_7098799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098800000_7098899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7098900000_7098999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099000000_7099099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099100000_7099199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099200000_7099299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099300000_7099399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099400000_7099499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099500000_7099599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099600000_7099699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099700000_7099799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099800000_7099899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7099900000_7099999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100000000_7100099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100100000_7100199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100200000_7100299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100300000_7100399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100400000_7100499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100500000_7100599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100600000_7100699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100700000_7100799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100800000_7100899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7100900000_7100999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101000000_7101099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101100000_7101199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101200000_7101299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101300000_7101399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101400000_7101499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101500000_7101599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101600000_7101699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101700000_7101799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101800000_7101899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7101900000_7101999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102000000_7102099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102100000_7102199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102200000_7102299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102300000_7102399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102400000_7102499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102500000_7102599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102600000_7102699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102700000_7102799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102800000_7102899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7102900000_7102999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103000000_7103099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103100000_7103199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103200000_7103299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103300000_7103399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103400000_7103499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103500000_7103599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103600000_7103699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103700000_7103799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103800000_7103899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7103900000_7103999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104000000_7104099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104100000_7104199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104200000_7104299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104300000_7104399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104400000_7104499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104500000_7104599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104600000_7104699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104700000_7104799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104800000_7104899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7104900000_7104999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105000000_7105099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105100000_7105199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105200000_7105299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105300000_7105399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105400000_7105499999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105500000_7105599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105600000_7105699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105700000_7105799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105800000_7105899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7105900000_7105999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7106000000_7106099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7106100000_7106199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7132800000_7132899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7142500000_7142599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7144900000_7144999999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7172700000_7172799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7200000000_7200099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7209000000_7209099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7220100000_7220199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7227000000_7227099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7277300000_7277399999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7335100000_7335199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7440200000_7440299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7472500000_7472599999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7505600000_7505699999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7509100000_7509199999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7509200000_7509299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7524800000_7524899999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7600000000_7600099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7707700000_7707799999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7753200000_7753299999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7868000000_7868099999.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataMiner.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchFile.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/searchFile.pickle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,20 +247,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="c2734b31-6dc3-4f51-bd76-71e96004b40b" />
-  </component>
   <component name="ProjectId" id="1ZplrxjYVKY2K4LJGTZebnSNBOt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.project" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -83,6 +313,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="228" y="162" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1585635005359" />
+    <state x="304" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592438286736">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1592209427197" />
+    <state x="304" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.947@0.23.1680.947" timestamp="1592438286736" />
     <state x="702" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585856424068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -95,22 +330,58 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586396122123" />
-    <state width="1899" height="177" key="GridCell.Tab.0.bottom" timestamp="1586558791216">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="240" key="GridCell.Tab.0.bottom" timestamp="1593068039686">
+      <screen x="0" y="23" width="1680" height="948" />
     </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1592592740303">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.bottom.inPresentationMode/0.23.1680.947@0.23.1680.947" timestamp="1592592740303" />
+    <state width="1659" height="244" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1592288685354" />
     <state width="1899" height="177" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586558791216" />
-    <state width="1899" height="177" key="GridCell.Tab.0.center" timestamp="1586558791216">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="240" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1592818447999" />
+    <state width="1659" height="240" key="GridCell.Tab.0.bottom/0.23.1680.948@0.23.1680.948" timestamp="1593068039686" />
+    <state width="1659" height="244" key="GridCell.Tab.0.bottom/0.23.1680.959@0.23.1680.959" timestamp="1592121292554" />
+    <state width="1659" height="244" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1592122850584" />
+    <state width="1659" height="240" key="GridCell.Tab.0.center" timestamp="1593068039684">
+      <screen x="0" y="23" width="1680" height="948" />
     </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1592592740303">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.center.inPresentationMode/0.23.1680.947@0.23.1680.947" timestamp="1592592740303" />
+    <state width="1659" height="244" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1592288685353" />
     <state width="1899" height="177" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586558791216" />
-    <state width="1899" height="177" key="GridCell.Tab.0.left" timestamp="1586558791215">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="240" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1592818447998" />
+    <state width="1659" height="240" key="GridCell.Tab.0.center/0.23.1680.948@0.23.1680.948" timestamp="1593068039684" />
+    <state width="1659" height="244" key="GridCell.Tab.0.center/0.23.1680.959@0.23.1680.959" timestamp="1592121292553" />
+    <state width="1659" height="244" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1592122850582" />
+    <state width="1659" height="240" key="GridCell.Tab.0.left" timestamp="1593068039684">
+      <screen x="0" y="23" width="1680" height="948" />
     </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1592592740302">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.left.inPresentationMode/0.23.1680.947@0.23.1680.947" timestamp="1592592740302" />
+    <state width="1659" height="244" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1592288685353" />
     <state width="1899" height="177" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586558791215" />
-    <state width="1899" height="177" key="GridCell.Tab.0.right" timestamp="1586558791216">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="240" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1592818447997" />
+    <state width="1659" height="240" key="GridCell.Tab.0.left/0.23.1680.948@0.23.1680.948" timestamp="1593068039684" />
+    <state width="1659" height="244" key="GridCell.Tab.0.left/0.23.1680.959@0.23.1680.959" timestamp="1592121292553" />
+    <state width="1659" height="244" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1592122850582" />
+    <state width="1659" height="240" key="GridCell.Tab.0.right" timestamp="1593068039685">
+      <screen x="0" y="23" width="1680" height="948" />
     </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1592592740303">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state width="1659" height="240" key="GridCell.Tab.0.right.inPresentationMode/0.23.1680.947@0.23.1680.947" timestamp="1592592740303" />
+    <state width="1659" height="244" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1592288685354" />
     <state width="1899" height="177" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586558791216" />
+    <state width="1659" height="240" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1592818447998" />
+    <state width="1659" height="240" key="GridCell.Tab.0.right/0.23.1680.948@0.23.1680.948" timestamp="1593068039685" />
+    <state width="1659" height="244" key="GridCell.Tab.0.right/0.23.1680.959@0.23.1680.959" timestamp="1592121292554" />
+    <state width="1659" height="244" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1592122850583" />
     <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1586493885129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -127,10 +398,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586493885129" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1586413599443">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="403" y="172" key="SettingsEditor" timestamp="1592119848008">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586413599443" />
+    <state x="403" y="172" key="SettingsEditor/0.23.1680.961@0.23.1680.961" timestamp="1592119848008" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1586413455624">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -151,20 +423,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586396145646" />
-    <state x="299" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1585721912049">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="262" y="225" width="588" height="685" key="search.everywhere.popup" timestamp="1592208627578">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="262" y="225" width="588" height="685" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1592208627578" />
     <state x="299" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585721912049" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scraper.py</url>
-          <line>243</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
