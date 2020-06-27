@@ -195,11 +195,16 @@ loadData = True
 words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki two stroke four pull " \
         "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller"
 
+welderHotWords = "mig tig stick shield 220 230 240"
+
 coldWords = "wanted"
+
+welderColdWords = ""
 
 desiredSearches = [Search("sfbay", "outboard", words, coldWords, 0, 150),
                    Search("reno", "outboard", words, coldWords, 0, 150),
-                   Search("sacramento", "outboard", words, coldWords, 0, 150)]
+                   Search("sacramento", "outboard", words, coldWords, 0, 150),
+                   Search("sfbay", "welder", welderHotWords, welderColdWords, 0, 150)]
 sendTexts = True
 
 #####################################################################################################################
