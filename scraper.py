@@ -4,7 +4,6 @@ import requests
 import datetime
 import time
 from lxml import html
-import matplotlib.pyplot as plotter
 from twilio.rest import Client
 
 # Minutes between scraping
