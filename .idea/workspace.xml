@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b981900-ccaf-4330-996a-78c531b7677d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/clScraper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clScraper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchFile.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/searchFile.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
