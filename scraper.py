@@ -196,7 +196,7 @@ words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki 
 
 welderHotWords = "mig tig stick shield 220 230 240"
 
-coldWords = "wanted"
+coldWords = "wanted quangsoutboards.com"
 
 welderColdWords = ""
 
