@@ -194,6 +194,11 @@ loadData = True
 words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki two stroke four pull " \
         "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller"
 
+dadBoatWords = "excellent running clean boat outboard motor reliable"
+
+dadColdBoatWords = "wanted 4x4 camper homestead jayco slx van rv rvs fifth gmc ford chevy radeon keyboard dell pc " \
+                   "gaming motorhome 5th toyhauler tent pop travel touring slideout "
+
 welderHotWords = "mig tig stick shield 220 230 240"
 
 coldWords = "wanted quangsoutboards.com"
@@ -202,7 +207,13 @@ welderColdWords = ""
 
 desiredSearches = [Search("sfbay", "outboard", words, coldWords, 0, 150),
                    Search("reno", "outboard", words, coldWords, 0, 150),
-                   Search("sacramento", "outboard", words, coldWords, 0, 150),
+                   Search("sacramento", "outboard", dadBoatWords, dadColdBoatWords, 0, 150),
+                   Search("sfbay", "starcraft", dadBoatWords, dadColdBoatWords, 2000, 10000),
+                   Search("reno", "starcraft", dadBoatWords, dadColdBoatWords, 2000, 10000),
+                   Search("sacramento", "starcraft", words, coldWords, 2000, 10000),
+                   Search("sfbay", "gregor", dadBoatWords, dadColdBoatWords, 2000, 10000),
+                   Search("reno", "gregor", dadBoatWords, dadColdBoatWords, 2000, 10000),
+                   Search("sacramento", "gregor", words, coldWords, 2000, 10000),
                    Search("sfbay", "welder", welderHotWords, welderColdWords, 0, 150)]
 sendTexts = True
 
