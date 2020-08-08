@@ -15,6 +15,22 @@ auth_token = '82741da6122123696f5a4994a682f81d'
 client = Client(account_sid, auth_token)
 
 
+class TextSentLibrary:
+    def __init__(self):
+        self.library = list()
+
+    def addListing(self, newListingID):
+        self.library.append(newListingID)
+
+    def newIDCheck(self, newID):
+        listingIsUnknown = True
+        for idCheck in self.library:
+            if idCheck == newID:
+                listingIsUnknown = False
+                print("Hit found, text already sent!")
+        return listingIsUnknown
+
+
 # Define craigslist listing object
 class Listing:
     def __init__(self, title, link, price, listID):
@@ -78,7 +94,7 @@ class Search:
         self.allObjects = list()
         self.hitObjects = list()
 
-    def scrape(self, enableTexting):
+    def scrape(self, enableTexting, IDlib):
         listingIndex = 0
         titles = list()
         links = list()
@@ -130,9 +146,10 @@ class Search:
 
                 print("Found NEW listing! Score:", scoreReport)
 
-                if scoreReport > 0.1 and newListing.title != "deleted":
-                    if self.maxPrice >= newListing.price > self.minPrice:
+                if scoreReport > 0.1 and newListing.title != "deleted" and IDlib.newIDCheck(IDs[i]):
+                    if self.maxPrice >= newListing.price >= self.minPrice:
                         self.hitObjects.append(newListing)
+                        IDlib.addListing(IDs[i])
                         if enableTexting:
                             Search.sendText(newListing.price, newListing.link)
 
@@ -153,7 +170,7 @@ class Search:
 
     @staticmethod
     def scoreMatch(hotWords, coldWordsLocal, inString):
-        badSymbols = ",./\\][!@#$%^&*()-=+_<>`~?\"\'"
+        badSymbols = ";:,./\\][!@#$%^&*()-=+_<>`~?\"\'"
         for symbol in badSymbols:
             inString.replace(symbol, ' ')
         stringWords = (inString.lower()).split()
@@ -192,29 +209,67 @@ loadData = True
 #####################################################################################################################
 
 words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki two stroke four pull " \
-        "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller"
+        "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller running  " \
+        "clymer seloc start"
 
-dadBoatWords = "excellent running clean boat outboard motor reliable"
+coldWords = "wanted quangsoutboards wanted 4x4 camper homestead jayco slx van rv rvs fifth gmc ford chevy radeon " \
+            "keyboard dell pc gaming motorhome 5th toyhauler tent pop travel touring slideout"
 
-dadColdBoatWords = "wanted 4x4 camper homestead jayco slx van rv rvs fifth gmc ford chevy radeon keyboard dell pc " \
-                   "gaming motorhome 5th toyhauler tent pop travel touring slideout "
+boatMin = 300
+boatMax = 1700
 
-welderHotWords = "mig tig stick shield 220 230 240"
+outboardMin = 25
+outboardMax = 500
 
-coldWords = "wanted quangsoutboards.com"
+notifiedListings = TextSentLibrary()
 
-welderColdWords = ""
+desiredSearches = [Search("sfbay", "outboard", words, coldWords, outboardMin, outboardMax),
+                   Search("sfbay", "mercury hp", words, coldWords, outboardMin, outboardMax),
+                   Search("sfbay", "johnson hp", words, coldWords, outboardMin, outboardMax),
+                   Search("sfbay", "evinrude", words, coldWords, outboardMin, outboardMax),
+                   Search("reno", "outboard", words, coldWords, outboardMin, outboardMax),
+                   Search("reno", "mercury hp", words, coldWords, outboardMin, outboardMax),
+                   Search("reno", "johnson hp", words, coldWords, outboardMin, outboardMax),
+                   Search("reno", "evinrude", words, coldWords, outboardMin, outboardMax),
+                   Search("sacramento", "outboard", words, coldWords, outboardMin, outboardMax),
+                   Search("sacramento", "mercury hp", words, coldWords, outboardMin, outboardMax),
+                   Search("sacramento", "johnson hp", words, coldWords, outboardMin, outboardMax),
+                   Search("sacramento", "evinrude", words, coldWords, outboardMin, outboardMax),
+                   Search("modesto", "outboard", words, coldWords, outboardMin, outboardMax),
+                   Search("modesto", "mercury hp", words, coldWords, outboardMin, outboardMax),
+                   Search("modesto", "johnson hp", words, coldWords, outboardMin, outboardMax),
+                   Search("modesto", "evinrude", words, coldWords, outboardMin, outboardMax),
+                   Search("monterey", "outboard", words, coldWords, outboardMin, outboardMax),
+                   Search("monterey", "mercury hp", words, coldWords, outboardMin, outboardMax),
+                   Search("monterey", "johnson hp", words, coldWords, outboardMin, outboardMax),
+                   Search("monterey", "evinrude", words, coldWords, outboardMin, outboardMax),
 
-desiredSearches = [Search("sfbay", "outboard", words, coldWords, 0, 150),
-                   Search("reno", "outboard", words, coldWords, 0, 150),
-                   Search("sacramento", "outboard", dadBoatWords, dadColdBoatWords, 0, 150),
-                   Search("sfbay", "starcraft", dadBoatWords, dadColdBoatWords, 2000, 10000),
-                   Search("reno", "starcraft", dadBoatWords, dadColdBoatWords, 2000, 10000),
-                   Search("sacramento", "starcraft", words, coldWords, 2000, 10000),
-                   Search("sfbay", "gregor", dadBoatWords, dadColdBoatWords, 2000, 10000),
-                   Search("reno", "gregor", dadBoatWords, dadColdBoatWords, 2000, 10000),
-                   Search("sacramento", "gregor", words, coldWords, 2000, 10000),
-                   Search("sfbay", "welder", welderHotWords, welderColdWords, 0, 150)]
+                   Search("sfbay", "gregor", words, coldWords, boatMin, boatMax),
+                   Search("sfbay", "aluminum boat", words, coldWords, boatMin, boatMax),
+                   Search("sfbay", "fishing boat", words, coldWords, boatMin, boatMax),
+                   Search("sfbay", "starcraft", words, coldWords, boatMin, boatMax),
+                   Search("sfbay", "boat", words, coldWords, boatMin, boatMax),
+                   Search("monterey", "gregor", words, coldWords, boatMin, boatMax),
+                   Search("monterey", "aluminum boat", words, coldWords, boatMin, boatMax),
+                   Search("monterey", "fishing boat", words, coldWords, boatMin, boatMax),
+                   Search("monterey", "starcraft", words, coldWords, boatMin, boatMax),
+                   Search("monterey", "boat", words, coldWords, boatMin, boatMax),
+                   Search("reno", "gregor", words, coldWords, boatMin, boatMax),
+                   Search("reno", "aluminum boat", words, coldWords, boatMin, boatMax),
+                   Search("reno", "fishing boat", words, coldWords, boatMin, boatMax),
+                   Search("reno", "starcraft", words, coldWords, boatMin, boatMax),
+                   Search("reno", "boat", words, coldWords, boatMin, boatMax),
+                   Search("sacramento", "gregor", words, coldWords, boatMin, boatMax),
+                   Search("sacramento", "aluminum boat", words, coldWords, boatMin, boatMax),
+                   Search("sacramento", "fishing boat", words, coldWords, boatMin, boatMax),
+                   Search("sacramento", "starcraft", words, coldWords, boatMin, boatMax),
+                   Search("sacramento", "boat", words, coldWords, boatMin, boatMax),
+                   Search("modesto", "gregor", words, coldWords, boatMin, boatMax),
+                   Search("modesto", "aluminum boat", words, coldWords, boatMin, boatMax),
+                   Search("modesto", "fishing boat", words, coldWords, boatMin, boatMax),
+                   Search("modesto", "starcraft", words, coldWords, boatMin, boatMax),
+                   Search("modesto", "boat", words, coldWords, boatMin, boatMax)]
+
 sendTexts = True
 
 #####################################################################################################################
@@ -271,7 +326,7 @@ while 1:
     print("Searching: ", runStart)
 
     for search in searchQue:
-        search.scrape(sendTexts)
+        search.scrape(sendTexts, notifiedListings)
         # Save after each search completes
         with open('searchFile.pickle', 'wb') as searchFile:
             print("Saving to file...")
