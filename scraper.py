@@ -37,8 +37,9 @@ class Listing:
     def __init__(self, title, link, price, listID):
         self.title = str(title.lower())
         self.link = link
-        self.price = int(price[1:])
+        self.price = price
         self.listingID = listID
+        self.descriptiveText = ''
         # Try-catch block searches for more detail from each listing's specific page
         try:
             depthScrape = requests.get(self.link, timeout=10)
@@ -138,10 +139,10 @@ class Search:
         # Pre-filter results
         for i in range(len(prices)):
             print("        Checking", self.searchTerms.upper(), "-", self.location.upper(), i + 1, "/",
-                  str(totalListings), "(", IDs[i], ")")
-            if self.listingIsNew(IDs[i]):
-                newListing = Listing(titles[i], links[i], prices[i], IDs[i])
-
+                  str(totalListings), "(", IDs[i], ") Texting:", enableTexting)
+            if self.listingIsNew(IDs[i]) and (self.maxPrice >= int(prices[i][1:].replace(",", "")) >= self.minPrice):
+                newListing = Listing(titles[i], links[i], int(prices[i][1:].replace(",", "")), IDs[i])
+                print("Price hit: analyzing further...", newListing.price)
                 # Scoring using 'manual' identifiers
                 self.allObjects.append(newListing)
                 scoreReport = Search.scoreMatch(self.keywordsPos, self.keywordsNeg, newListing.descriptiveText)
@@ -153,7 +154,7 @@ class Search:
                         self.hitObjects.append(newListing)
                         IDlib.addListing(IDs[i])
                         if enableTexting:
-                            Search.sendText(newListing.price, newListing.link, self.location)
+                            Search.sendText(newListing.price, newListing.link, self.location, self.contactNumber)
 
     def listingIsNew(self, listingID):
         status = True
@@ -202,49 +203,51 @@ loadData = True
 #    python terminal)
 # 2. Add a new Search(location, search string, positiveWords, negativeWords, minPrice, maxPrice) to the
 #    desiredSearches array.
-# 3. Change sendTexts to true or false depending on whether you want to be notified of new listings
-#       NOTE: The first time you run the program, it will send a text for ALL hits (not only new ones).
-#             If this is not desired, run the program once with sentTexts set to False and allow it to build
-#             and save a library of search results. Exit the script, change sendTexts to True, and restart.
-#             Now, only notifications for new listings will be sent via text.
-
 #####################################################################################################################
 words = "motor honda mercury evinrude boat hp johnson yamaha marine fish suzuki two stroke four pull " \
         "fishing trailer mariner sail spinnaker sailboat catalina hobie rigging hours dinghy skiff tiller running  " \
         "clymer seloc start ft foot merc parts horse horsepower tohatsu"
 
-coldWords = "wanted quangsoutboards wanted 4x4 camper homestead jayco slx van rv rvs fifth gmc ford chevy radeon " \
-            "keyboard dell pc gaming motorhome 5th toyhauler tent pop travel touring slideout"
+coldWords = "wanted quangsoutboards wanted looking 4x4 camper homestead jayco slx van rv rvs fifth gmc ford chevy radeon " \
+            "keyboard dell pc gaming motorhome 5th toyhauler tent pop travel touring slideout pontoon mercruiser " \
+            "parting wtb props propeller prop"
 
-boatMin = 300
-boatMax = 1700
+genWords = "honda coleman watt"
+genColdWords = "wanted rent rental"
 
-outboardMin = 25
-outboardMax = 500
+genMin = 25
+genMax = 200
+
+boatMin = 500
+boatMax = 1500
+
+outboardMin = 40
+outboardMax = 250
 
 notifiedListings = TextSentLibrary()
 
-desiredSearches = [Search('modesto', 'outboard', words, coldWords, outboardMin, outboardMax, '+16509954172')]
+clSearchDomain = ["sfbay", "reno", "sacramento", "modesto", "monterey", "fresno", "bakersfield", "chico",
+                  "goldcountry", "hanford", "humboldt", "redding", "klamath", "susanville", "stockton", "yubasutter",
+                  "merced"]
+desiredSearches = list()
 
-# clSearchDomain = ["sfbay", "reno", "sacramento", "modesto", "monterey", "fresno", "bakersfield", "losangeles", "chico",
-#                   "goldcountry", "hanford", "humboldt", "redding", "klamath", "susanville", "stockton", "yubasutter",
-#                   "merced"]
-# desiredSearches = list()
-#
-# for location in clSearchDomain:
-#     desiredSearches.append(Search(location, "outboard", words, coldWords, outboardMin, outboardMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "mercury hp", words, coldWords, outboardMin, outboardMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "johnson hp", words, coldWords, outboardMin, outboardMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "evinrude", words, coldWords, outboardMin, outboardMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "gregor", words, coldWords, boatMin, boatMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "sailboat", words, coldWords, boatMin, boatMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "starcraft", words, coldWords, boatMin, boatMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "aluminum boat", words, coldWords, boatMin, boatMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "fishing boat", words, coldWords, boatMin, boatMax, '+16509954172'))
-#     desiredSearches.append(Search(location, "boat", words, coldWords, boatMin, boatMax, '+16509954172'))
-#
-#     # For Dad:
-#     desiredSearches.append(Search(location, "boat", words, coldWords, 2500, 10000, '+16509969406'))
+for location in clSearchDomain:
+    desiredSearches.append(Search(location, "outboard", words, coldWords, outboardMin, outboardMax, '+16509954172'))
+    desiredSearches.append(Search(location, "mercury hp", words, coldWords, outboardMin, outboardMax, '+16509954172'))
+    desiredSearches.append(Search(location, "johnson hp", words, coldWords, outboardMin, outboardMax, '+16509954172'))
+    desiredSearches.append(Search(location, "evinrude", words, coldWords, outboardMin, outboardMax, '+16509954172'))
+    desiredSearches.append(Search(location, "generator", genWords, genColdWords, genMin, genMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "gregor", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "sailboat", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "starcraft", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "aluminum boat", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "fishing boat", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "boat", words, coldWords, boatMin, boatMax, '+16509954172'))
+    # desiredSearches.append(Search(location, "boston whaler", words, coldWords, 8000, 20000, '+16509954172'))
+
+    # For Dad:
+    desiredSearches.append(Search(location, "boston whaler", words, coldWords, 8000, 20000, '+16509969406'))
+    desiredSearches.append(Search(location, "center console", words, coldWords, 8000, 20000, '+16509969406'))
 
 #####################################################################################################################
 #####################################################################################################################
@@ -253,6 +256,7 @@ desiredSearches = [Search('modesto', 'outboard', words, coldWords, outboardMin, 
 rejSearches = list()
 sendTexts = True
 isClearCycle = False
+containsNewSearch = False
 
 try:
     hitCount = 0
@@ -266,6 +270,8 @@ try:
                         appendNewSearch = False
             if appendNewSearch:
                 searchQue.append(desired)
+                sendTexts = False
+                containsNewSearch = True
 
         tempSearchQue = list()
         for loaded in searchQue:
@@ -307,6 +313,7 @@ except pickle.UnpicklingError:
 def deleteSearchFile():
     os.remove("searchFile.pickle")
     print("Deleting saved searchFile...")
+    Search.sendText(0, 'Reset listing library', '__SYS MSG__', '+16509954172')
 
 
 schedule.every().day.at("03:00").do(deleteSearchFile)
@@ -316,7 +323,8 @@ while 1:
     schedule.run_pending()
     print("Searching: ", runStart)
     if os.path.exists("searchFile.pickle") and not isClearCycle:
-        sendTexts = True
+        if not containsNewSearch:
+            sendTexts = True
     else:
         sendTexts = False
         isClearCycle = True
@@ -350,4 +358,5 @@ while 1:
         sendTexts = True
 
     isClearCycle = False
+    containsNewSearch = False
     time.sleep(searchInterval * 60)
